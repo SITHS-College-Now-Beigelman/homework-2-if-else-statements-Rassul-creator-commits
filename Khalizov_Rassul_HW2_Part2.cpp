@@ -71,5 +71,13 @@ int main()
     // outputs the average score by subtracting the minimium and maximium scores
     cout<<"The final score is " <<((Judge1 + Judge2 + Judge3 + Judge4 +Judge5 + Judge6 - min - max)/4);
 
+    What is the score of Judge 1?1
+What is the score of Judge 2?2
+What is the score of Judge 3?3
+What is the score of Judge 4?4
+What is the score of Judge 5?5
+What is the score of Judge 6?6
+The final score is 5.25%
+        
 return 0; 
 }
