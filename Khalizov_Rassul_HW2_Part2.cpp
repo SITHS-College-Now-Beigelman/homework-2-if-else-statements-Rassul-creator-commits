@@ -1,83 +1,57 @@
-// Rassul Khalizov
-// Homework 2 Part 2 
-// October 6th 
+// Khalizov Rassul
+// Homework 2
+// November 27, 2024
 
-#include<iostream>
+#include <iostream>
+using namespace std;
 
-using namespace std; 
+int main() {
+    double scores[6]; // the array
+    double highest = 0.0, lowest = 10.0; // the lowest and highest scores possible
 
-int main()
-{
-    // declares the variables as numbers
-    double Judge1;
-    double Judge2;
-    double Judge3;
-    double Judge4;
-    double Judge5;
-    double Judge6;
-    double min;
-    double max;
+    // Aks the user to input the judges scores
+    cout << "Enter 6 scores from the judges (between 0.0 and 10.0):" << endl;
+    for (int i = 0; i < 6; i++) {
+        cin >> scores[i];
+        if (scores[i] > highest) {
+            highest = scores[i]; // Finds the highest score
+        }
+        if (scores[i] < lowest) {
+            lowest = scores[i]; // Finds the lowest score
+        }
+    }
 
-    // asks for the input of each judge and marks them as a number
-    cout<<"What is the score of Judge 1?"; 
-    cin >> Judge1 ; 
+    // Doesn't include the highest and lowest score in the count for total
+    double total = 0.0;
+    int count = 0;
+    for (int i = 0; i < 6; i++) {
+        if (scores[i] != highest && scores[i] != lowest) {
+            total += scores[i];
+            count++;
+        }
+    }
 
-     cout<<"What is the score of Judge 2?"; 
-    cin >> Judge2 ; 
+    // If there are duplicates, the program is adjusted
+    if (count < 4) {
+        for (int i = 0; i < 6; i++) {
+            if (count == 4) break;
+            if (scores[i] == highest || scores[i] == lowest) {
+                total += scores[i];
+                count++;
+            }
+        }
+    }
 
-     cout<<"What is the score of Judge 3?"; 
-    cin >> Judge3 ; 
+    // Calculates the average when the highest and lowest scores are removed
+    double average = total / 4;
 
-     cout<<"What is the score of Judge 4?"; 
-    cin >> Judge4 ; 
+    // Print the final score
+    cout << "The final score for the project is: " << average << endl;
 
-     cout<<"What is the score of Judge 5?"; 
-    cin >> Judge5 ; 
-
-     cout<<"What is the score of Judge 6?"; 
-    cin >> Judge6 ; 
-
-    // Arrange the numbers to find the maximium and minimium 
-    if (Judge2 < min)
-    min = Judge2; 
-
-    if (Judge3 < min)
-    min = Judge3;
-
-    if (Judge4 < min)
-    min = Judge4;
-
-    if (Judge5 < min)
-    min = Judge5;
-
-    if (Judge6 < min)
-    min = Judge6;
-
-    if (Judge2 < max)
-    min = Judge2;
-
-    if (Judge3 < max)
-    min = Judge3;
-
-    if (Judge4 < max)
-    min = Judge4;
-
-    if (Judge5 < max)
-    min = Judge5;
-
-    if (Judge6 < max)
-    min = Judge6;
-
-    // outputs the average score by subtracting the minimium and maximium scores
-    cout<<"The final score is " <<((Judge1 + Judge2 + Judge3 + Judge4 +Judge5 + Judge6 - min - max)/4);
-
-    What is the score of Judge 1?1
-What is the score of Judge 2?2
-What is the score of Judge 3?3
-What is the score of Judge 4?4
-What is the score of Judge 5?5
-What is the score of Judge 6?6
-The final score is 5.25%
-        
-return 0; 
+    /*
+    Enter 6 scores from the judges (between 0.0 and 10.0):
+    1 2 3 4 5 6
+    The final score for the project is: 3.5
+    */
+    return 0;
 }
